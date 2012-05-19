@@ -208,14 +208,14 @@ function renderResults(result) {
     for (var i = 0, item = null; i < result.Count(); i++) {
         item = result.items[i];
          output +=
-                '<li id="' + item.id + '" class="loans">' + item.country + ': (' + item.sector + ": " + item.activity + ') <a href="http://www.kiva.org/lend/' + item.id + '">' + item.name + '</a></li>';
+                '<li id="' + item.id + '" class="loans">' + item.location.country + ': (' + item.sector + ": " + item.activity + ') <a href="http://www.kiva.org/lend/' + item.id + '">' + item.name + '</a></li>';
     }
     replaceLoading(": " + result.Count());
     jQuery('#results').html("<ul class='loan-display'>"+output+"</ul>");
 }
 
 function receiveKBFile(data){
-    jsLoans = JSLINQ(data.Loans).OrderBy(function(item){return item.country + ":" + item.name;});
+    jsLoans = JSLINQ(data.loans).OrderBy(function(item){return item.location.country + ":" + item.name;});
     displayTables(jsLoans);
 	jQuery('.loans').click( function(l) {
         var loanId = jQuery(this).attr('id');
@@ -229,4 +229,4 @@ function receiveKBFile(data){
 		});
 	});
 }
-jQuery.getJSON("jsonloans.json", null, receiveKBFile);
+jQuery.getJSON("directfromapi.json", null, receiveKBFile);
