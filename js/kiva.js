@@ -176,7 +176,7 @@ function buildCriteria(){
                 return ((testStrCommaDelim(loan.name, this.name())
                     && (testStrCommaDelim(loan.sector,this.sector()))
                     && (testStrCommaDelim(loan.activity, this.activity()))
-                    && (testStrCommaDelim(loan.country, this.country()))));
+                    && (testStrCommaDelim(loan.location.country, this.country()))));
                     //&& (loan.Partner.toUpperCase().indexOf(this.partner())!= -1);
             }catch(e){
                 addLog(e.message);
@@ -229,4 +229,4 @@ function receiveKBFile(data){
 		});
 	});
 }
-jQuery.getJSON("directfromapi.json", null, receiveKBFile);
+jQuery.getJSON("http://api.kivaws.org/v1/loans/search.json?jsonp=receiveKBFile&callback=?",null,null);
