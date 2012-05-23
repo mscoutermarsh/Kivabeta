@@ -124,30 +124,6 @@ var totalPages = 0;
 var pagesRemaining = 0;
 var jslloans;
 
-jQuery(document).ready( function() {
-	$('#saveFilterBtn').click(saveFilter);
-	$("#filterBtn1").click(function() {
-  		applyFilter(1);
-	});
-	$("#filterBtn2").click(function() {
-  		applyFilter(2);
-	});
-	$("#filterBtn3").click(function() {
-  		applyFilter(3);
-	});
-	$("#filterBtn4").click(function() {
-  		applyFilter(4);
-	});
-	$("#filterBtn5").click(function() {
-  		applyFilter(5);
-	});
-	$("#clearSearchBtn").click(function() {
-  		clearSearchSelection();
-	});
-	
-
-	loadFilters();
-});
 
 function testStrCommaDelim(objvalue, str)
 {
@@ -212,6 +188,7 @@ function renderResults(result) {
     }
     replaceLoading(": " + result.Count());
     jQuery('#results').html("<ul class='loan-display'>"+output+"</ul>");
+    jQuery('#results').show('fast');
 }
 
 function receiveKBFile(data){
@@ -235,6 +212,7 @@ var currentData;
 var currentPage = 1;
 var pagesToLoad = 5;
 var totalPages = 0;
+var apiURL = "http://api.kivaws.org/v1/loans/search.json?jsonp=recieveJSON&callback=?";
 
 function recieveJSON(data){
 	currentData = data;
@@ -250,30 +228,34 @@ function recieveJSON(data){
 		currentPage++;
 		jQuery.getJSON(apiURL + "&page=" + currentPage,null,null);
 	}else{
-		alert(jsonData);
+		jQuery("#loader").hide('slow');
 	}
 	receiveKBFile(jsonData);
 }
-var apiURL = "http://api.kivaws.org/v1/loans/search.json?jsonp=recieveJSON&callback=?";
-jQuery.getJSON(apiURL + "&page=" + currentPage,null);
 
 
-
-function searchLoans(pages, startPage, query){
+jQuery(document).ready( function() {
+	$('#saveFilterBtn').click(saveFilter);
+	$("#filterBtn1").click(function() {
+  		applyFilter(1);
+	});
+	$("#filterBtn2").click(function() {
+  		applyFilter(2);
+	});
+	$("#filterBtn3").click(function() {
+  		applyFilter(3);
+	});
+	$("#filterBtn4").click(function() {
+  		applyFilter(4);
+	});
+	$("#filterBtn5").click(function() {
+  		applyFilter(5);
+	});
+	$("#clearSearchBtn").click(function() {
+  		clearSearchSelection();
+	});
 	
-
-	for (i=1;i<5;i++){
-		
-		alert(jsonData);
-	}
-	// if (query) {
-	// 	apiURL = apiURL + "&" + query;
-	// }
-	// if (startPage){
-	// 	apiURL= apiURL + "&page=" + page;
-	// }
-}
-
-// searchLoans(1,null,null);
-
-///
+	loadFilters();
+	jQuery("#loader").show('slow');
+	jQuery.getJSON(apiURL + "&page=" + currentPage,null);
+});
