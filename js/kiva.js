@@ -215,7 +215,7 @@ function renderResults(result) {
 }
 
 function receiveKBFile(data){
-    jsLoans = JSLINQ(data.loans).OrderBy(function(item){return item.location.country + ":" + item.name;});
+    jsLoans = JSLINQ(data).OrderBy(function(item){return item.location.country + ":" + item.name;});
     displayTables(jsLoans);
 	jQuery('.loans').click( function(l) {
         var loanId = jQuery(this).attr('id');
@@ -229,4 +229,51 @@ function receiveKBFile(data){
 		});
 	});
 }
-jQuery.getJSON("http://api.kivaws.org/v1/loans/search.json?jsonp=receiveKBFile&callback=?",null,null);
+
+var jsonData;
+var currentData;
+var currentPage = 1;
+var pagesToLoad = 5;
+var totalPages = 0;
+
+function recieveJSON(data){
+	currentData = data;
+	totalPages = currentData.paging.total;
+	currentPage = currentData.paging.page;
+	if(currentPage == 1){
+		jsonData = data.loans;
+	}else{
+		jsonData = jsonData.concat(data.loans);
+	}
+
+	if(currentPage<pagesToLoad){
+		currentPage++;
+		jQuery.getJSON(apiURL + "&page=" + currentPage,null,null);
+	}else{
+		alert(jsonData);
+	}
+	receiveKBFile(jsonData);
+}
+var apiURL = "http://api.kivaws.org/v1/loans/search.json?jsonp=recieveJSON&callback=?";
+jQuery.getJSON(apiURL + "&page=" + currentPage,null);
+
+
+
+function searchLoans(pages, startPage, query){
+	
+
+	for (i=1;i<5;i++){
+		
+		alert(jsonData);
+	}
+	// if (query) {
+	// 	apiURL = apiURL + "&" + query;
+	// }
+	// if (startPage){
+	// 	apiURL= apiURL + "&page=" + page;
+	// }
+}
+
+// searchLoans(1,null,null);
+
+///
