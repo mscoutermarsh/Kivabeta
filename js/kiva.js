@@ -184,11 +184,10 @@ function renderResults(result) {
     for (var i = 0, item = null; i < result.Count(); i++) {
         item = result.items[i];
          output +=
-                '<li id="' + item.id + '" class="loans">' + item.location.country + ': (' + item.sector + ": " + item.activity + ') <a href="http://www.kiva.org/lend/' + item.id + '">' + item.name + '</a></li>';
+                '<tr><td id="' + item.id + '" class="loans">' + item.location.country + ': (' + item.sector + ": " + item.activity + ') <a href="http://www.kiva.org/lend/' + item.id + '">' + item.name + '</a></td></tr>';
     }
     replaceLoading(": " + result.Count());
-    jQuery('#results').html("<ul class='loan-display'>"+output+"</ul>");
-    jQuery('#results').show('fast');
+    jQuery('#results').html("<table class='table table-striped table-condensed'>"+output+"</table>");
 }
 
 function receiveKBFile(data){
