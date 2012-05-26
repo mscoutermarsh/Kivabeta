@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>KivaBeta</title>
+	<link type="text/css" href="./js/jquery-ui-1.8.2.custom.css" rel="stylesheet">
+	<link type="text/css" href="./css/bootstrap.simplex.css" rel="stylesheet"></head>
+<body >
+
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="../">KivaBeta</a>
+				<div class="nav-collapse">
+
+					<ul class="nav">
+						<li>
+							<a href="#">About</a>
+						</li>
+						<li>
+							<a id="#" href="#">Link</a>
+						</li>
+						<li class="divider-vertical"></li>
+					</ul>
+
+					<ul class="nav nav-pills pull-right">
+						<li>
+   							 <a href="#"  class="filterBtn"><b>Filters:</b></a>
+  						</li>
+						<li>
+   							 <a href="#" id="filterBtn1"></a>
+  						</li>
+  						<li>
+   							 <a href="#" id="filterBtn2" class="filterBtn"></a>
+  						</li>
+  						<li>
+   							 <a href="#" id="filterBtn3" class="filterBtn"></a>
+  						</li>
+  						<li>
+   							 <a href="#" id="filterBtn4" class="filterBtn"></a>
+  						</li>
+  						<li>
+   							 <a href="#" id="filterBtn5" class="filterBtn"></a>
+  						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="filter" class="well" style="width: 75%; height:40px; padding-bottom: 2px; padding-top: 2px; margin-left: auto; margin-right: auto;">
+			Name:
+			<input type="text" id="searchNameBox" onkeyup="performSearch();" style="width:125px;">
+			Country:
+			<input type="text" id="searchCountryBox" onkeyup="performSearch();" style="width:125px;">
+			Sector:
+			<input type="text" id="searchSectorBox" onkeyup="performSearch();" style="width:125px;">
+			Activity:
+			<input type="text" id="searchActivityBox" onkeyup="performSearch();" style="width:125px;">
+			<a class="btn" id="clearSearchBtn" href="#">Clear</a>
+			<a class="btn btn-primary" id="saveFilterBtn" href="#">Save Filter</a>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="span12 well">
+				<h3>Loans</h3>
+				<div id="loader" class="loadingLoans">
+					<img src="/img/kivaLoader.gif" />
+					Loading Loans
+					<br/>
+				</div>
+				<p class="">
+					<span id="results" tabindex="0"></span>
+					<span id="log" ></span>
+				</p>
+			</div>
+		</div>
+		<footer class="footer">
+			<p class="pull-left">(C) 2012 Kiva</p>
+			<p class="pull-right">
+				<a href="#">Back to top</a>
+			</p>
+		</footer>
+	</div>
+	<script type="text/javascript" src="./js/JSLINQ.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-ui-1.8.2.custom.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.layout.min-1.2.0.js"></script>
+	<script type="text/javascript" src="./js/jquery.cookies.2.2.0.js"></script>
+	<script type="text/javascript" src="./js/json2.js"></script>
+	<script type="text/javascript" src="./js/bootstrap.js"></script>
+	<script type="text/javascript" src="./js/kiva.js"></script>
+</body>
+</html>
