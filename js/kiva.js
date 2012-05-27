@@ -184,10 +184,10 @@ function renderResults(result) {
     for (var i = 0, item = null; i < result.Count(); i++) {
         item = result.items[i];
          output +=
-                '<tr><td id="' + item.id + '" class="loans"><b>' + item.name + '</b></td><td>' + item.sector + ": " + item.activity + '</td><td>' +  item.location.country + '</td></tr>';
+                '<tr onClick=\"displayLoanDetails(\''+item.name+'\','+item.image.id+',\''+item.use+'\')\"><td id="' + item.id + '" class="loans"><b>' + item.name + '</b></td><td>' + item.sector + ": " + item.activity + '</td><td>' +  item.location.country + '</td></tr>';
     }
     replaceLoading(": " + result.Count());
-    jQuery('#results').html("<table class='table table-striped table-condensed'><thea"+output+"</table>");
+    jQuery('#results').html("<table class='table table-striped table-condensed'>"+output+"</table>");
 }
 
 function receiveKBFile(data){
@@ -198,12 +198,18 @@ function receiveKBFile(data){
 		jQuery('#image').show();
 		jQuery.each(data.Loans, function(i,loan) {
 			if (loanId == loan.id) {
-				jQuery('#borrower-name').html(loan.name);
+				jQuery('#caption').html(loan.name);
 				jQuery('#borrower-image').html('<img src="http://www.kiva.org/img/w300h300/' + loan.imgID  + '.jpg" />');
 				jQuery('#loan-description').html('will use this loan ' + loan.use);
 			}
 		});
 	});
+}
+
+function displayLoanDetails(name, imgID, use) {
+	jQuery('#borrower-image').html('<img src="http://www.kiva.org/img/w300h300/' + imgID  + '.jpg" />');
+	jQuery('#borrower-caption').html('<h5>'+name+'</h5><p>Will use this loan ' + use + '</p>');
+	return false;
 }
 
 var jsonData;
