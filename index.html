@@ -27,47 +27,59 @@
 						</li>
 						<li class="divider-vertical"></li>
 					</ul>
-
-					<ul class="nav nav-pills pull-right">
-						<li>
-   							 <a href="#"  class="filterBtn"><b>Filters:</b></a>
-  						</li>
-						<li>
-   							 <a href="#" id="filterBtn1"></a>
-  						</li>
-  						<li>
-   							 <a href="#" id="filterBtn2" class="filterBtn"></a>
-  						</li>
-  						<li>
-   							 <a href="#" id="filterBtn3" class="filterBtn"></a>
-  						</li>
-  						<li>
-   							 <a href="#" id="filterBtn4" class="filterBtn"></a>
-  						</li>
-  						<li>
-   							 <a href="#" id="filterBtn5" class="filterBtn"></a>
-  						</li>
-					</ul>
 				</div>
 			</div>
 		</div>
-		<div id="filter" class="well" style="width: 75%; height:40px; padding-bottom: 2px; padding-top: 2px; margin-left: auto; margin-right: auto;">
-			Name:
-			<input type="text" id="searchNameBox" onkeyup="performSearch();" style="width:125px;">
-			Country:
-			<input type="text" id="searchCountryBox" onkeyup="performSearch();" style="width:125px;">
-			Sector:
-			<input type="text" id="searchSectorBox" onkeyup="performSearch();" style="width:125px;">
-			Activity:
-			<input type="text" id="searchActivityBox" onkeyup="performSearch();" style="width:125px;">
-			<a class="btn" id="clearSearchBtn" href="#">Clear</a>
-			<a class="btn btn-primary" id="saveFilterBtn" href="#">Save Filter</a>
-		</div>
 	</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="span12 well">
+	<div class="container" style="margin-left:auto;margin-right:auto;">
+		<div class="row-fluid">
+			<div id="sidebar" class="span3">
+				<div id="filterSidebar"style="position:fixed;">
+					<div id="filterForm" class="well">
+						<h3>Filters</h3>
+						Name:
+						<br/>
+						<input type="text" id="searchNameBox" onkeyup="performSearch();" style="width:90%;">
+						<br/>
+						Country:
+						<br/>
+						<input type="text" id="searchCountryBox" onkeyup="performSearch();" style="width:90%;">
+						<br/>
+						Sector:
+						<br/>
+						<input type="text" id="searchSectorBox" onkeyup="performSearch();" style="width:90%;">
+						<br/>
+						Activity:
+						<br/>
+						<input type="text" id="searchActivityBox" onkeyup="performSearch();" style="width:90%;">
+						<br/>
+						<a class="btn" id="clearSearchBtn" href="#">Clear</a>
+						<a class="btn btn-primary" id="saveFilterBtn" href="#">Save Filter</a>
+					</div>
+					<div id="savedFilters" class="well">
+						<h3>Saved Filters</h3>
+						<ul class="nav nav-tabs nav-stacked" style="font-size:smaller;">
+							<li>
+								<a href="#" id="filterBtn1" class="filterBtn"></a>
+							</li>
+							<li>
+								<a href="#" id="filterBtn2" class="filterBtn"></a>
+							</li>
+							<li>
+								<a href="#" id="filterBtn3" class="filterBtn"></a>
+							</li>
+							<li>
+								<a href="#" id="filterBtn4" class="filterBtn"></a>
+							</li>
+							<li>
+								<a href="#" id="filterBtn5" class="filterBtn"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="span9 well">
 				<h3>Loans</h3>
 				<div id="loader" class="loadingLoans">
 					<img src="./img/kivaLoader.gif" />

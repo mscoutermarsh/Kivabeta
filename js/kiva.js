@@ -184,14 +184,14 @@ function renderResults(result) {
     for (var i = 0, item = null; i < result.Count(); i++) {
         item = result.items[i];
          output +=
-                '<tr><td id="' + item.id + '" class="loans">' + item.location.country + ': (' + item.sector + ": " + item.activity + ') <a href="http://www.kiva.org/lend/' + item.id + '">' + item.name + '</a></td></tr>';
+                '<tr><td id="' + item.id + '" class="loans"><b>' + item.name + '</b></td><td>' + item.sector + ": " + item.activity + '</td><td>' +  item.location.country + '</td></tr>';
     }
     replaceLoading(": " + result.Count());
-    jQuery('#results').html("<table class='table table-striped table-condensed'>"+output+"</table>");
+    jQuery('#results').html("<table class='table table-striped table-condensed'><thea"+output+"</table>");
 }
 
 function receiveKBFile(data){
-    jsLoans = JSLINQ(data).OrderBy(function(item){return item.location.country + ":" + item.name;});
+    jsLoans = JSLINQ(data);
     displayTables(jsLoans);
 	jQuery('.loans').click( function(l) {
         var loanId = jQuery(this).attr('id');
